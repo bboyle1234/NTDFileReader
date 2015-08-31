@@ -35,18 +35,18 @@ namespace NTDFileReader
             using (var ms = new MemoryStream(bytes)) {
                 using (var br = new BinaryReader(ms)) {
 
-                    double price;
+                    decimal price;
                     DateTime time;
                     ulong volume;
 
                     br.BaseStream.Seek(0, SeekOrigin.Begin);
-                    var priceMultiplier = -br.ReadDouble();
+                    var priceMultiplier = (decimal)-br.ReadDouble();
 
                     br.BaseStream.Seek(0xC, SeekOrigin.Begin);
                     var recordCount = br.ReadUInt32();
 
                     br.BaseStream.Seek(0x10, SeekOrigin.Begin);
-                    price = br.ReadDouble();
+                    price = (decimal)br.ReadDouble();
 
                     br.BaseStream.Seek(0x30, SeekOrigin.Begin);
                     var timeTicks = br.ReadInt64();

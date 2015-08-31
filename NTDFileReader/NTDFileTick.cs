@@ -13,7 +13,7 @@ namespace NTDFileReader {
         public DateTime TimeStamp { get; set; }
 
         [DataMember(Name = "p")]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         [DataMember(Name = "v")]
         public ulong Volume { get; set; }
