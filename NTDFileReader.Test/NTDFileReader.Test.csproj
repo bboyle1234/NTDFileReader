@@ -65,10 +65,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\input.ntd" />
+    <None Include="Resources\ntdInput.ntd" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\output.txt" />
+    <None Include="Resources\ntdOutput.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NTDFileReader\NTDFileReader.csproj">

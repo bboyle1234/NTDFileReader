@@ -63,9 +63,9 @@ namespace NTDFileReader.Test.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] input {
+        internal static byte[] ntdInput {
             get {
-                object obj = ResourceManager.GetObject("input", resourceCulture);
+                object obj = ResourceManager.GetObject("ntdInput", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -90,9 +90,9 @@ namespace NTDFileReader.Test.Properties {
         ///2015-08-20 12:00:02	41.45	1
         ///2015-08-20 12:00:02 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string output {
+        internal static string ntdOutput {
             get {
-                return ResourceManager.GetString("output", resourceCulture);
+                return ResourceManager.GetString("ntdOutput", resourceCulture);
             }
         }
     }

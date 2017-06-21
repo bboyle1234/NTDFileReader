@@ -13,11 +13,11 @@ namespace NTDFileReader.Test {
 
             var sb = new StringBuilder();
 
-            foreach (var tick in NTDFileReaderUtility.Read(Resources.input)) {
+            foreach (var tick in NTDFileReaderUtility.Read(Resources.ntdInput)) {
                 sb.AppendFormat("{0}\t{1}\t{2}\r\n", tick.TimeStamp.ToString("yyyy-MM-dd HH:mm:ss"), tick.Price.ToString("F"), tick.Volume);
             }
 
-            Assert.AreEqual(sb.ToString(), Resources.output);
+            Assert.AreEqual(sb.ToString(), Resources.ntdOutput);
         }
     }
 }
