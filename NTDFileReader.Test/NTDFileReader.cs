@@ -6,7 +6,7 @@ using System.Text;
 namespace NTDFileReader.Test {
 
     [TestClass]
-    public class NTDFileReaderTests {
+    public class NTDFileReader {
 
         [TestMethod]
         public void NTDFileReader_InputOutput() {

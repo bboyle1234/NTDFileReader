@@ -63,6 +63,33 @@ namespace NTDFileReader.Test.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] ncdInput {
+            get {
+                object obj = ResourceManager.GetObject("ncdInput", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2017-06-19 02:35:59.507	5708.25	5711.25	5705.5	5711.25	2329
+        ///2017-06-19 02:48:48.515	5709.75	5712.75	5709.75	5712.75	435
+        ///2017-06-19 02:57:18.167	5711.25	5714.25	5711.25	5714.25	440
+        ///2017-06-19 03:03:02.062	5712.75	5715.75	5712.75	5715.75	434
+        ///2017-06-19 03:03:29.148	5714.25	5717.25	5714.25	5717.25	101
+        ///2017-06-19 03:09:32.113	5715.75	5718.75	5715.75	5718.75	588
+        ///2017-06-19 03:10:46.914	5717.25	5720.25	5717.25	5720.25	245
+        ///2017-06-19 03:11:08.312	5718.75	5721.75	5718.75	5721.75	217
+        ///2017-06-19 03:22:37.460	 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ncdOutput {
+            get {
+                return ResourceManager.GetString("ncdOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] ntdInput {
             get {
                 object obj = ResourceManager.GetObject("ntdInput", resourceCulture);
