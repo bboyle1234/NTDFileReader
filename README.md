@@ -1,5 +1,6 @@
 # NTDFileReader
-Reads the ticks from a NinjaTrader .ntd historical tick data file.
+Reads the ticks from a NinjaTrader 7 .ntd historical tick data file.
+*New!* Started work on deciphering the NinjaTrader 8 .ncd historical bar data files.
 
 # Nuget
 Install-Package NTDFileReader
