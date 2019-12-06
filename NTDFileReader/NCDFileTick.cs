@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NTDFileReader {
-    public class NCDFileBar {
+    public class NCDFileTick {
         public DateTime Timestamp;
-        public double Open, High, Low, Close;
+        public double Price, Bid, Ask;
         public long Volume;
     }
 }
