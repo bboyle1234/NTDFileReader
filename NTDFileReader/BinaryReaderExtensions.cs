@@ -9,7 +9,7 @@ namespace NTDFileReader {
 
     public static class BinaryReaderExtensions {
 
-        public static int GetBigEndianInt(this BinaryReader br, int byteCount) {
+        public static int ReadBigEndianInt(this BinaryReader br, int byteCount) {
             var result = 0;
             for (int i = 0; i < byteCount; i++) {
                 result = result << 8;
