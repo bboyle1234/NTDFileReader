@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NTDFileReader {
+
     [DataContract]
     public class NTDFileTick {
 
