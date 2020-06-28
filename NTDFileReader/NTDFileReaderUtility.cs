@@ -82,9 +82,9 @@ namespace NTDFileReader
                         // price
                         switch ((mask >> 2) & b011) { // 00001100
                             case b000: deltaPrice = 0; break;
-                            case b001: deltaPrice = br.GetBigEndianInt(1) - 0x80; break;
-                            case b010: deltaPrice = br.GetBigEndianInt(2) - 0x4000; break;
-                            case b011: deltaPrice = br.GetBigEndianInt(4) - 0x40000000; break;
+                            case b001: deltaPrice = br.ReadBigEndianInt(1) - 0x80; break;
+                            case b010: deltaPrice = br.ReadBigEndianInt(2) - 0x4000; break;
+                            case b011: deltaPrice = br.ReadBigEndianInt(4) - 0x40000000; break;
                             default: throw new NotImplementedException("Unexpected mask value for price");
                         }
                         price += priceMultiplier * deltaPrice;

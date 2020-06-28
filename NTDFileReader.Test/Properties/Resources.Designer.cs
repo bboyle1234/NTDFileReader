@@ -19,7 +19,7 @@ namespace NTDFileReader.Test.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,27 +63,26 @@ namespace NTDFileReader.Test.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] ncdInput {
+        internal static byte[] NQ202006231900_Input {
             get {
-                object obj = ResourceManager.GetObject("ncdInput", resourceCulture);
+                object obj = ResourceManager.GetObject("NQ202006231900_Input", resourceCulture);
                 return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2017-06-19 02:35:59.507	5708.25	5711.25	5705.5	5711.25	2329
-        ///2017-06-19 02:48:48.515	5709.75	5712.75	5709.75	5712.75	435
-        ///2017-06-19 02:57:18.167	5711.25	5714.25	5711.25	5714.25	440
-        ///2017-06-19 03:03:02.062	5712.75	5715.75	5712.75	5715.75	434
-        ///2017-06-19 03:03:29.148	5714.25	5717.25	5714.25	5717.25	101
-        ///2017-06-19 03:09:32.113	5715.75	5718.75	5715.75	5718.75	588
-        ///2017-06-19 03:10:46.914	5717.25	5720.25	5717.25	5720.25	245
-        ///2017-06-19 03:11:08.312	5718.75	5721.75	5718.75	5721.75	217
-        ///2017-06-19 03:22:37.460	 [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 2020-06-23 18:00:00.0110000	3113.25	3113.25	3113.25	3113.25	3113.25	3113.25	56
+        ///2020-06-23 18:00:00.0150000	3113.25	3113.25	3113.25	3113.25	3113	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3113	3113	3113	3113	3113	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3113	3113	3113	3113	3113	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3113	3113	3113	3113	3113	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3112.75	3112.75	3112.75	3112.75	3112.75	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3112.75	3112.75	3112.75	3112.75	3112.75	3113.25	1
+        ///2020-0 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ncdOutput {
+        internal static string NQ202006231900_Output {
             get {
-                return ResourceManager.GetString("ncdOutput", resourceCulture);
+                return ResourceManager.GetString("NQ202006231900_Output", resourceCulture);
             }
         }
         

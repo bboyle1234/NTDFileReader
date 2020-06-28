@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ncdInput" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ncdInput.ncd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="NQ202006231900_Input" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\nq202006231900.last.ncd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ncdOutput" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ncdOutput.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="NQ202006231900_Output" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\nq202006231900.last.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="ntdInput" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\ntdinput.ntd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
