@@ -63,29 +63,26 @@ namespace NTDFileReader.Test.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] NQTicksInput {
+        internal static byte[] NQ202006231900_Input {
             get {
-                object obj = ResourceManager.GetObject("NQTicksInput", resourceCulture);
+                object obj = ResourceManager.GetObject("NQ202006231900_Input", resourceCulture);
                 return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 20191002 130000 0150000;7640;7639.75;7640;1
-        ///20191002 130000 4960000;7640.25;7639.75;7640.25;1
-        ///20191002 130000 5190000;7640.25;7640;7640.25;1
-        ///20191002 130000 6480000;7640.25;7640;7640.25;1
-        ///20191002 130001 5000000;7640;7640;7640.5;1
-        ///20191002 130001 6640000;7640.5;7640;7640.5;1
-        ///20191002 130001 6640000;7640.5;7640;7640.5;1
-        ///20191002 130002 6170000;7640.5;7640.25;7640.5;1
-        ///20191002 130002 6170000;7640.5;7640.25;7640.5;1
-        ///20191002 130003 5350000;7640.25;7640.25;7640.75;4
-        ///20191002 130003 5930000;7640.25;764 [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 2020-06-23 18:00:00.0110000	3113.25	3113.25	3113.25	3113.25	3113.25	3113.25	56
+        ///2020-06-23 18:00:00.0150000	3113.25	3113.25	3113.25	3113.25	3113	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3113	3113	3113	3113	3113	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3113	3113	3113	3113	3113	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3113	3113	3113	3113	3113	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3112.75	3112.75	3112.75	3112.75	3112.75	3113.25	1
+        ///2020-06-23 18:00:00.0150000	3112.75	3112.75	3112.75	3112.75	3112.75	3113.25	1
+        ///2020-0 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string NQTicksOutput {
+        internal static string NQ202006231900_Output {
             get {
-                return ResourceManager.GetString("NQTicksOutput", resourceCulture);
+                return ResourceManager.GetString("NQ202006231900_Output", resourceCulture);
             }
         }
         

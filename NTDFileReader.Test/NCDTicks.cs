@@ -12,25 +12,27 @@ namespace NTDFileReader.Test {
     [TestClass]
     public class NCDTicksTests {
 
+        uint GetSomeValue() => 10;
+
         [TestMethod]
         public void NCDTicks_01() {
-            using var stream = new MemoryStream(Resources.NQTicksInput);
+            using var stream = new MemoryStream(Resources.NQ202006231900_Input);
             using var enumeratorIn = NCDFileReaderUtility.Read(stream).GetEnumerator();
-            using var enumeratorOut = Resources.NQTicksOutput.Split('\n').Select(line => {
-                var parts = line.Trim().Split(';');
-                var timestamp = DateTime.ParseExact(parts[0], "yyyyMMdd HHmmss fffffff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
-                var price = double.Parse(parts[1], CultureInfo.InvariantCulture);
-                var bid = double.Parse(parts[2], CultureInfo.InvariantCulture);
-                var ask = double.Parse(parts[3], CultureInfo.InvariantCulture);
-                var volume = long.Parse(parts[4], CultureInfo.InvariantCulture);
+            using var enumeratorOut = Resources.NQ202006231900_Output.Split('\n').Select(line => {
+                var parts = line.Trim().Split('\t');
+                var timestamp = DateTime.ParseExact(parts[0], "yyyy-MM-dd HH:mm:ss.fffffff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal);
+                var price = double.Parse(parts[4], CultureInfo.InvariantCulture);
+                var bid = double.Parse(parts[5], CultureInfo.InvariantCulture);
+                var ask = double.Parse(parts[6], CultureInfo.InvariantCulture);
+                var volume = long.Parse(parts[7], CultureInfo.InvariantCulture);
                 return new NCDFileTick(bid, ask, price, volume, timestamp);
             }).GetEnumerator();
             while (enumeratorIn.MoveNext()) {
-                if (!enumeratorOut.MoveNext()) throw new Exception();
+                if (!enumeratorOut.MoveNext()) throw new Exception("Uneven number of ticks");
                 if (!enumeratorIn.Current.Equals(enumeratorOut.Current))
-                    throw new Exception("");
+                    throw new Exception("Ticks do not match");
             }
-            if (enumeratorOut.MoveNext()) throw new Exception();
+            if (enumeratorOut.MoveNext()) throw new Exception("Uneven number of ticks");
         }
     }
 }

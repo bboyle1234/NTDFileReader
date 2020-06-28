@@ -6,26 +6,32 @@ using System.Threading.Tasks;
 
 namespace NTDFileReader {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-    
+
     public readonly struct NCDFileTick : IEquatable<NCDFileTick> {
 
         public readonly DateTime Timestamp;
-        public readonly double Price, Bid, Ask;
+        public readonly double Price, Bid, Offer;
         public readonly long Volume;
 
-        public NCDFileTick(double bid, double ask, double price, long volume, DateTime timestamp) {
+        public NCDFileTick(double bid, double offer, double price, long volume, DateTime timestamp) {
             Bid = bid;
-            Ask = ask;
+            Offer = offer;
             Price = price;
             Volume = volume;
             Timestamp = timestamp;
         }
 
-        public override bool Equals(object obj) 
+        public override bool Equals(object obj)
             => Equals((NCDFileTick)obj);
 
         public bool Equals(NCDFileTick other)
-            => Bid == other.Bid && Ask == other.Ask && Price == other.Price && Volume == other.Volume && Timestamp == other.Timestamp;
+            => Bid == other.Bid
+            && Offer == other.Offer
+            && Price == other.Price
+            && Volume == other.Volume
+            && Timestamp == other.Timestamp;
 
+        public override int GetHashCode()
+            => HashCode.Combine(Timestamp, Price, Bid, Offer, Volume);
     }
 }
