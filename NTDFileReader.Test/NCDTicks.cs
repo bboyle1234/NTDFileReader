@@ -11,9 +11,7 @@ namespace NTDFileReader.Test {
 
     [TestClass]
     public class NCDTicksTests {
-
-        uint GetSomeValue() => 10;
-
+    
         [TestMethod]
         public void NCDTicks_01() {
             using var stream = new MemoryStream(Resources.NQ202006231900_Input);
