@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NTDFileReader
-{
+namespace NTDFileReader {
     /// <summary>
     /// Reads the ticks from a NinjaTrader .ntd historical tick data file.
     /// If you're using this, remember that the ticks are stored in the same timezone as your computer.
@@ -15,8 +14,7 @@ namespace NTDFileReader
     /// https://www.bigmiketrading.com/ninjatrader-programming/7396-ntd-file-specification.html
     /// https://www.bigmiketrading.com/elite-circle/6802-gomrecorder-2-a-37.html#post112912
     /// </summary>
-    public static class NTDFileReaderUtility
-    {
+    public static class NTDFileReaderUtility {
         const int b000 = 0;
         const int b001 = 1;
         const int b010 = 2;
@@ -55,57 +53,45 @@ namespace NTDFileReader
                     br.BaseStream.Seek(0x38, SeekOrigin.Begin);
                     volume = (uint)br.ReadUInt64();
 
-                    yield return new NTDFileTick {
-                        Price = price,
-                        TimeStamp = time,
-                        Volume = volume,
-                    };
+                    yield return new NTDFileTick(time, price, volume);
 
                     br.BaseStream.Seek(0x40, SeekOrigin.Begin);
 
                     for (uint i = 1; i < recordCount; i++) {
 
                         var mask = br.ReadByte();
-                        uint deltaTime;
-                        int deltaPrice;
 
-                        // time
-                        switch (mask & b011) { // 00000011
-                            case b000: deltaTime = 0; break;
-                            case b001: deltaTime = br.ReadBigEndianUInt(1); break;
-                            case b010: deltaTime = br.ReadBigEndianUInt(2); break;
-                            case b011: deltaTime = br.ReadBigEndianUInt(3); break;
-                            default: throw new NotImplementedException("Unexpected mask value for time");
-                        }
-                        time = time.AddSeconds(deltaTime);
+                        time = time.AddSeconds((mask & 0b11) switch 
+                        {
+                            0b00 => 0.0,
+                            0b01 => br.ReadBigEndianUInt(1),
+                            0b10 => br.ReadBigEndianUInt(2),
+                            0b11 => br.ReadBigEndianUInt(3),
+                            _ => throw new NotImplementedException("Unexpected mask value for time"),
+                        });
 
-                        // price
-                        switch ((mask >> 2) & b011) { // 00001100
-                            case b000: deltaPrice = 0; break;
-                            case b001: deltaPrice = br.ReadBigEndianInt(1) - 0x80; break;
-                            case b010: deltaPrice = br.ReadBigEndianInt(2) - 0x4000; break;
-                            case b011: deltaPrice = br.ReadBigEndianInt(4) - 0x40000000; break;
-                            default: throw new NotImplementedException("Unexpected mask value for price");
-                        }
-                        price += priceMultiplier * deltaPrice;
+                        price += priceMultiplier * (((mask >> 2) & 0b11) switch
+                        {
+                            0b000 => 0,
+                            0b001 => br.ReadBigEndianInt(1) - (1 << 7),
+                            0b010 => br.ReadBigEndianInt(2) - (1 << 15),
+                            0b011 => br.ReadBigEndianInt(4) - (1 << 31),
+                            _ => throw new NotImplementedException("Unexpected mask value for price"),
+                        });
 
-                        // volume
-                        switch ((mask >> 4) & b111) { // 01110000
-                            case b001: volume = br.ReadBigEndianUInt(1); break;
-                            case b110: volume = br.ReadBigEndianUInt(2); break;
-                            case b111: volume = br.ReadBigEndianUInt(4); break;
-                            case b010: volume = br.ReadBigEndianUInt(8); break;
-                            case b011: volume = br.ReadBigEndianUInt(1) * 100; break;
-                            case b100: volume = br.ReadBigEndianUInt(1) * 500; break;
-                            case b101: volume = br.ReadBigEndianUInt(1) * 1000; break;
-                            default: throw new NotImplementedException("Unexpected mask value for volume");
-                        }
+                        volume = (((mask >> 4) & 0b111) switch
+                        {
+                            0b001 => br.ReadBigEndianUInt(1),
+                            0b110 => br.ReadBigEndianUInt(2),
+                            0b111 => br.ReadBigEndianUInt(4),
+                            0b010 => br.ReadBigEndianUInt(8),
+                            0b011 => br.ReadBigEndianUInt(1) * 100,
+                            0b100 => br.ReadBigEndianUInt(1) * 500,
+                            0b101 => br.ReadBigEndianUInt(1) * 1000,
+                            _ => throw new NotImplementedException("Unexpected mask value for volume"),
+                        });
 
-                        yield return new NTDFileTick {
-                            TimeStamp = time,
-                            Price = price,
-                            Volume = volume
-                        };
+                        yield return new NTDFileTick(time, price, volume);
                     }
                 }
             }
