@@ -6,57 +6,42 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NTDFileReader {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
     public static class BinaryReaderExtensions {
 
         public static int ReadBigEndianInt(this BinaryReader br, int byteCount) {
-            var result = 0;
-            for (int i = 0; i < byteCount; i++) {
-                result = result << 8;
+            var result = (int)br.ReadByte();
+            for(var i = 1; i < byteCount; i++) {
+                result <<= 8;
                 result += br.ReadByte();
             }
             return result;
         }
 
         public static long ReadBigEndianLong(this BinaryReader br, int byteCount) {
-            var result = 0L;
-            for (int i = 0; i < byteCount; i++) {
-                result = result << 8;
+            var result = (long)br.ReadByte();
+            for (var i = 1; i < byteCount; i++) {
+                result <<= 8;
                 result += br.ReadByte();
             }
             return result;
         }
 
         public static uint ReadBigEndianUInt(this BinaryReader br, int byteCount) {
-            var result = 0u;
-            for (var i = 0; i < byteCount; i++) {
-                result = result << 8;
+            var result = (uint)br.ReadByte();
+            for (var i = 1; i < byteCount; i++) {
+                result <<= 8;
                 result += br.ReadByte();
             }
             return result;
         }
 
         public static ulong ReadBigEndianULong(this BinaryReader br, int byteCount) {
-            var result = 0UL;
-            for (var i = 0; i < byteCount; i++) {
-                result = result << 8;
+            var result = (ulong)br.ReadByte();
+            for (var i = 1; i < byteCount; i++) {
+                result <<= 8;
                 result += br.ReadByte();
-            }
-            return result;
-        }
-
-        public static uint ReadLittleEndianUInt(this BinaryReader br, int byteCount) {
-            var result = 0u;
-            for (var i = 0; i < byteCount; i++) {
-                result += ((uint)br.ReadByte()) << (i * 8);
-            }
-            return result;
-        }
-
-        public static ulong ReadLittleEndianULong(this BinaryReader br, int byteCount) {
-            var result = 0UL;
-            for (var i = 0; i < byteCount; i++) {
-                result += ((uint)br.ReadByte()) << (i * 8);
             }
             return result;
         }
