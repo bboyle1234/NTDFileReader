@@ -6,9 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NTDFileReader {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-    public static class BinaryReaderExtensions {
+    internal static class BinaryReaderExtensions {
 
         public static int ReadBigEndianInt(this BinaryReader br, int byteCount) {
             var result = (int)br.ReadByte();

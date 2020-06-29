@@ -124,6 +124,12 @@
   <data name="NQ202006231900_Output" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\nq202006231900.last.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="NQMinutes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\nqminutes.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="NQMinutes_Last" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\nqminutes.last.ncd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ntdInput" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\ntdinput.ntd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

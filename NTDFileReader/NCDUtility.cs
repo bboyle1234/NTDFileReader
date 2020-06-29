@@ -13,9 +13,9 @@ using static System.Math;
 namespace NTDFileReader {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-    public static class NCDFileReaderUtility {
+    public static class NCDUtility {
 
-        public static IEnumerable<NCDFileTick> Read(Stream stream) {
+        public static IEnumerable<NCDTick> ReadTicks(Stream stream) {
             using var br = new BinaryReader(stream);
             br.ReadUInt32();
             var incrementSize = br.ReadDouble();
@@ -89,23 +89,86 @@ namespace NTDFileReader {
                 var volume = (byte2 >> 5) switch
                 {
                     0b001 => br.ReadByte(),
-                    0b010 => 100L * br.ReadByte(),
-                    0b011 => 500L * br.ReadByte(),
-                    0b100 => 1000L * br.ReadByte(),
-                    0b101 => br.ReadBigEndianLong(2),
-                    0b110 => br.ReadBigEndianLong(4),
-                    0b111 => br.ReadBigEndianLong(8),
+                    0b010 => 100UL * br.ReadByte(),
+                    0b011 => 500UL * br.ReadByte(),
+                    0b100 => 1000UL * br.ReadByte(),
+                    0b101 => br.ReadBigEndianULong(2),
+                    0b110 => br.ReadBigEndianULong(4),
+                    0b111 => br.ReadBigEndianULong(8),
                     _ => throw new Exception("Unknown volume flag.")
                 };
 
-                yield return new NCDFileTick(bid, offer, price, volume, new DateTime(timeTicks, DateTimeKind.Local));
+                yield return new NCDTick(bid, offer, price, volume, new DateTime(timeTicks, DateTimeKind.Local));
             }
         }
 
-        static double Increment(this double value, double increment, int numIncrements) {
-            if (numIncrements == 0) return value;
-            return (double)((decimal)increment * ((int)Math.Round(value / increment, MidpointRounding.AwayFromZero) + numIncrements));
+        public static IEnumerable<NCDMinute> ReadMinutes(Stream stream) {
+            using var br = new BinaryReader(stream);
+            br.ReadUInt32();
+            var incrementSize = br.ReadDouble();
+            var open = br.ReadDouble();
+            var high = open;
+            var low = open;
+            var close = open;
+            var volume = 0ul;
+            var time = new DateTime(br.ReadInt64(), DateTimeKind.Local);
+
+            while (stream.Position < stream.Length) {
+                var byte1 = br.ReadByte();
+                var byte2 = br.ReadByte();
+
+                time = time.AddMinutes((byte1 & 0b11) switch
+                {
+                    0b00 => 1,
+                    0b01 => br.ReadByte(),
+                    0b10 => br.ReadBigEndianUInt(2) - (1 << 15),
+                    0b11 => br.ReadBigEndianUInt(4) - (1 << 31),
+                });
+
+                open = open.Increment(incrementSize, ((byte1 >> 2) & 0b11) switch
+                {
+                    0b00 => 0,
+                    0b01 => br.ReadByte() - (1 << 7),
+                    0b10 => br.ReadBigEndianUInt(2) - (1 << 15),
+                    0b11 => br.ReadBigEndianUInt(4) - (1 << 31),
+                });
+
+                high = open.Increment(incrementSize, ((byte2 >> 4) & 0b11) switch
+                {
+                    0b00 => 0,
+                    0b01 => br.ReadByte(),
+                    0b10 => br.ReadBigEndianUInt(2),
+                    0b11 => br.ReadBigEndianUInt(4),
+                });
+
+                low = open.Increment(-incrementSize, (byte2 >> 6) switch { 
+                    0b00 => 0,
+                    0b01 => br.ReadByte(),
+                    0b10 => br.ReadBigEndianLong(2),
+                    0b11 => br.ReadBigEndianLong(4),
+                });
+
+                close = low.Increment(incrementSize, (byte2 & 0b11) switch { 
+                    0b00 => 0,
+                    0b01 => br.ReadByte(),
+                    0b10 => br.ReadBigEndianLong(2),
+                    0b11 => br.ReadBigEndianLong(4),
+                });
+
+                volume = (byte1 >> 5) switch
+                {
+                    0b000 => 0,
+                    0b001 => (ulong)br.ReadByte(),
+                    0b010 => (ulong)br.ReadByte() * 100,
+                    0b011 => (ulong)br.ReadByte() * 500,
+                    0b100 => (ulong)br.ReadByte() * 1000,
+                    0b101 => br.ReadBigEndianULong(2),
+                    0b110 => br.ReadBigEndianULong(4),
+                    0b111 => br.ReadBigEndianULong(8),
+                };
+
+                yield return new NCDMinute(open, high, low, close, volume, time);
+            }
         }
     }
 }
- 

@@ -1,4 +1,9 @@
-﻿
+﻿// Original .ncd utility code that I read and pulled logic from
+// https://github.com/jrstokka/NinjaTraderNCDFiles/blob/master/NCDFile.cs
+// Thanks JR Stokka! Incredible job figuring out the ncd file format!
+
+
+
 //using System;
 //using System.Collections.Generic;
 //using System.Linq;

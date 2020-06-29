@@ -87,6 +87,31 @@ namespace NTDFileReader.Test.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 2020-06-23 18:01:00.0000000	3113.25	3115.25	3111	3114	3113.25	3113.75	1138
+        ///2020-06-23 18:02:00.0000000	3114	3114.75	3113.5	3114.75	3114	3114.5	229
+        ///2020-06-23 18:03:00.0000000	3114.75	3115	3114.25	3114.5	3114.75	3115.25	105
+        ///2020-06-23 18:04:00.0000000	3114.5	3115.75	3114.5	3115.75	3114.5	3115	200
+        ///2020-06-23 18:05:00.0000000	3115.75	3117	3115.5	3117	3115.75	3116.25	296
+        ///2020-06-23 18:06:00.0000000	3117	3117.5	3116	3116.5	3117	3117.5	296
+        ///2020-06-23 18:07:00.0000000	3116.25	3117	3116.25	3116.75	3116.25	311 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string NQMinutes {
+            get {
+                return ResourceManager.GetString("NQMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NQMinutes_Last {
+            get {
+                object obj = ResourceManager.GetObject("NQMinutes_Last", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] ntdInput {

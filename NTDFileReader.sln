@@ -1,17 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTDFileReader", "NTDFileReader\NTDFileReader.csproj", "{41254367-E546-48C9-8F76-5BA903E36CBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTDFileReader", "NTDFileReader\NTDFileReader.csproj", "{41254367-E546-48C9-8F76-5BA903E36CBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTDFileReader.Test", "NTDFileReader.Test\NTDFileReader.Test.csproj", "{3E5497A6-6B43-4033-9C3B-3E429D8D5513}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NTDFileReader.Test", "NTDFileReader.Test\NTDFileReader.Test.csproj", "{3E5497A6-6B43-4033-9C3B-3E429D8D5513}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BD377109-E5E2-4564-9A66-961C1E8FB7DF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{BD377109-E5E2-4564-9A66-961C1E8FB7DF}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -31,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFDF95E5-1556-4CDF-BF43-C231196D2121}
 	EndGlobalSection
 EndGlobal
