@@ -22,7 +22,7 @@ namespace NTDFileReader {
         }
 
         public override bool Equals(object obj)
-            => Equals((NCDFileTick)obj);
+            => obj is NCDFileTick tick && Equals(tick);
 
         public bool Equals(NCDFileTick other)
             => Bid == other.Bid
