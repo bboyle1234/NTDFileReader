@@ -5,7 +5,8 @@
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Title>NTDFileReader</Title>
-    <Description>Reads the ticks from a NinjaTrader 7 and 8 historical tick and historical minute data files.</Description>
+    <Description>Reads the ticks from NinjaTrader 7 and 8 historical tick and historical minute data files.</Description>
+    <RepositoryUrl>https://github.com/bboyle1234/NTDFileReader</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
