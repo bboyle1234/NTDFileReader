@@ -5,7 +5,14 @@
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Title>NTDFileReader</Title>
-    <Description>Reads the ticks from a NinjaTrader .ntd historical tick data file.</Description>
+    <Description>Reads the ticks from a NinjaTrader 7 and 8 historical tick and historical minute data files.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.91">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>
